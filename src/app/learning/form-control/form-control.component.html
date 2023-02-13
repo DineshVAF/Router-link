@@ -1,0 +1,24 @@
+<div class="Home">
+    <h2>Form Control</h2>
+    <form>
+        <input type="text" name="email" [formControl]="email" />
+        {{email['invalid'] && (email['dirty'] || email['touched'])}}
+        <br>
+        <div *ngIf="email['invalid'] && (email['dirty'] || email['touched'])">
+            <p class="red" *ngIf="email.errors?.['minlength']">Minimum 3 Characters is Invalid</p>
+            <p class="red" *ngIf="email.errors?.['maxlength']">Maximum 12 Characters is Invalid</p>
+            <p class="red" *ngIf="email.errors?.['required']">Email is required</p>
+        </div>
+        <button type="submit" (click)="showemail()">Click Me</button>
+    </form>
+    <br>
+    <br>
+    <form [formGroup]="fg" (ngSubmit)="onsubmit()">
+        <input type="text" formControlName="username" *ngIf="isShow"/>
+        <input type="text" formControlName="email" />
+        <input type="text" formControlName="password" /><br>
+        <button (click)="add()">Add</button>
+        <button  (click)="remove()">Remove</button>
+        <button type="submit" >Submit</button>
+    </form>
+</div>

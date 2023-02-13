@@ -1,0 +1,154 @@
+<table>
+    <thead>
+        <tr>
+            <th>S.No</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Class</th>
+            <th>Club</th>
+            <th>Persona</th>
+            <th>Crush</th>
+            <th>BreastSize</th>
+            <th>Strength</th>
+            <th>HairStyle</th>
+            <th>Color</th>
+            <th>Stockings</th>
+            <th>Accessory</th>
+            <th>ScheduleTime</th>
+            <th>ScheduleDestination</th>
+            <th>ScheduleAction</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list;let i=index;let even = even; let odd = odd" [ngClass]="{even: even,odd:odd}">
+            <td> {{i+1}}</td>
+            <td>{{item.ID}}</td>
+            <td>{{item.Name}}</td>
+            <td [style.color]="item.Color">
+                <div *ngIf="item.Gender==1;else unexpression;">
+                    Female
+                </div>
+                <ng-template #unexpression>
+                    Male
+                </ng-template>
+            </td>
+            <td>{{item.Class}}</td>
+            <td>{{item.Club}}</td>
+            <td>{{item.Persona}}</td>
+            <td>{{item.Crush}}</td>
+            <td>{{item.BreastSize}}</td>
+            <td>{{item.Strength}}</td>
+            <td>{{item.HairStyle}}</td>
+            <td [style.background-color]="item.Color">{{item.Color}}</td>
+            <td>{{item.Stockings}}</td>
+            <td>{{item.Accessory}}</td>
+            <td>{{item.ScheduleTime}}</td>
+            <td>{{item.ScheduleDestination}}</td>
+            <td>{{item.ScheduleAction}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<br>
+<br>
+
+<button (click)="view='gender'">Gender</button>
+<button (click)="view='color'">Color</button>
+<button (click)="view='nodata'">No Data</button>
+
+
+
+<div *ngIf="view;else refer">
+    <div [ngSwitch]="view">
+        <div *ngSwitchCase="'gender'">
+            <div *ngFor="let item of list">
+                <div [ngSwitch]="item.Gender">
+                    <div *ngSwitchCase="'0'">
+                        <p class="male"> {{item.Name}}</p>
+
+                    </div>
+                    <div *ngSwitchCase="'1'">
+                        <p class="female">{{item.Name}}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'color'">
+            <button (click)="viewer='red'">Red</button>
+            <button (click)="viewer='green'">Green</button>
+            <button (click)="viewer='yellow'">Yellow</button>
+            <div [ngSwitch]="viewer">
+                <div *ngFor="let item of list">
+                    <div *ngSwitchCase="'red'">
+                        <div *ngIf="item.Color=='Red'">
+                            <p class="male"> {{item.Name}}</p>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'green'">
+                        <div *ngIf="item.Color=='Green'">
+                            <p class="female">{{item.Name}}</p>
+                        </div>
+                    </div>
+                    <div *ngSwitchCase="'yellow'">
+                        <div *ngIf="item.Color=='Yellow'">
+                            <p class="males">{{item.Name}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchDefault>
+            No data
+        </div>
+    </div>
+</div>
+
+<ng-template #refer>
+    No Data
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

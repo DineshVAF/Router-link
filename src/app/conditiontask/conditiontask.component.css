@@ -1,0 +1,22 @@
+table, th,td{
+border: 1px solid #000;
+border-collapse: collapse;
+}
+th{
+    background-color: #EEEEEE;
+}
+.even{
+background-color: #895785;
+}
+.odd{
+    background-color: #FFB0C3;
+}
+.male{
+    color:crimson ;
+}
+.female{
+    color: #FFA500;
+}
+.males{
+    color:darkblue
+}
